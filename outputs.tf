@@ -29,22 +29,6 @@ output "project" {
   description = "Project where the dataset and tables are created"
 }
 
-output "table_ids" {
-  value = [
-    for table in google_bigquery_table.main :
-    table.table_id
-  ]
-  description = "Unique id for the table being provisioned"
-}
-
-output "table_names" {
-  value = [
-    for table in google_bigquery_table.main :
-    table.friendly_name
-  ]
-  description = "Friendly name for the table being provisioned"
-}
-
 output "env_vars" {
   value = {
     "BIGQUERY_DATASET"            = google_bigquery_dataset.main.dataset_id
