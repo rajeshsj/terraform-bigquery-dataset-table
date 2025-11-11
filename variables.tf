@@ -49,44 +49,10 @@ variable "deletion_protection" {
   default     = false
 }
 
-variable "default_table_expiration_ms" {
-  description = "TTL of tables using the dataset in MS"
-  type        = number
-  default     = null
-}
-
-variable "default_partition_expiration_ms" {
-  description = "The default partition expiration for all partitioned tables in the dataset, in MS"
-  type        = number
-  default     = null
-}
-
-variable "max_time_travel_hours" {
-  description = "Defines the time travel window in hours"
-  type        = number
-  default     = null
-}
-
-variable "storage_billing_model" {
-  description = "Specifies the storage billing model for the dataset. Set this flag value to LOGICAL to use logical bytes for storage billing, or to PHYSICAL to use physical bytes instead. LOGICAL is the default if this flag isn't specified."
-  type        = string
-  default     = null
-
-  validation {
-    condition     = var.storage_billing_model == null || var.storage_billing_model == "LOGICAL" || var.storage_billing_model == "PHYSICAL"
-    error_message = "storage_billing_model must be null, \"LOGICAL\" or \"PHYSICAL\"."
-  }
-}
 
 variable "project_id" {
   description = "Project where the dataset and table are created"
   type        = string
-}
-
-variable "encryption_key" {
-  description = "Default encryption key to apply to the dataset. Defaults to null (Google-managed)."
-  type        = string
-  default     = "projects/mptdev-kms/locations/us-west4/keyRings/ebaybqdataservices-keyring/cryptoKeys/ebaybqdataservices-key""
 }
 
 variable "dataset_labels" {
